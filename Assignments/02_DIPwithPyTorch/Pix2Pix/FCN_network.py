@@ -42,22 +42,22 @@ class FullyConvNetwork(nn.Module):
             nn.ReLU(inplace=True)
         )
         self.deconv4 = nn.Sequential(
-            nn.ConvTranspose2d(128, 32, kernel_size=4, stride=2, padding=1),  # 64+64 skip
+            nn.ConvTranspose2d(128, 32, kernel_size=4, stride=2, padding=1),  # 128 input (64+64 skip)
             nn.BatchNorm2d(32),
             nn.ReLU(inplace=True)
         )
         self.deconv3 = nn.Sequential(
-            nn.ConvTranspose2d(64, 16, kernel_size=4, stride=2, padding=1),  # 32+32 skip
+            nn.ConvTranspose2d(64, 16, kernel_size=4, stride=2, padding=1),  # 64 input (32+32 skip)
             nn.BatchNorm2d(16),
             nn.ReLU(inplace=True)
         )
         self.deconv2 = nn.Sequential(
-            nn.ConvTranspose2d(32, 8, kernel_size=4, stride=2, padding=1),  # 16+16 skip
+            nn.ConvTranspose2d(32, 8, kernel_size=4, stride=2, padding=1),  # 32 input (16+16 skip)
             nn.BatchNorm2d(8),
             nn.ReLU(inplace=True)
         )
         self.deconv1 = nn.Sequential(
-            nn.ConvTranspose2d(16, 3, kernel_size=4, stride=2, padding=1),  # 8+8 skip
+            nn.ConvTranspose2d(16, 3, kernel_size=4, stride=2, padding=1),  # 16 input (8+8 skip)
             nn.Tanh()
         )
 
